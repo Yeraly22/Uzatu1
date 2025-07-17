@@ -380,6 +380,39 @@ Ayaulym-Qyz Uzatu!
 src='../static.tildacdn.com/tild3839-3339-4662-a239-326266663866/__.svg'
 alt='' imgfield='tn_img_1752675006014'
 /> </div> </div> </div> </div> <script>t_onFuncLoad('t396_initialScale',function() {t396_initialScale('1167690876');});t_onReady(function() {t_onFuncLoad('t396_init',function() {t396_init('1167690876');});});</script> <!-- /T396 --> </div> <div id="rec1166105071" class="r t-rec" style=" " data-animationappear="off" data-record-type="875"> <!-- t875 --> <script>t_onReady(function() {t_onFuncLoad('t875_init',function() {t875_init('1166105071');});});</script> </div> </div> <!--/allrecords--> <!-- Stat --> <script type="text/javascript">if(!window.mainTracker) {window.mainTracker='tilda';}
-setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.key=k;s.id="tildastatscript";s.src=g;if(w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded",f,false);} else {f();}})(document,window,'59426a78253ca6a8e9d099a0a1240375','script','../static.tildacdn.com/js/tilda-stat-1.0.min.js');},2000);</script> </body> 
+setTimeout(function(){(function(d,w,k,o,g) {var n=d.getElementsByTagName(o)[0],s=d.createElement(o),f=function(){n.parentNode.insertBefore(s,n);};s.type="text/javascript";s.async=true;s.key=k;s.id="tildastatscript";s.src=g;if(w.opera=="[object Opera]") {d.addEventListener("DOMContentLoaded",f,false);} else {f();}})(document,window,'59426a78253ca6a8e9d099a0a1240375','script','../static.tildacdn.com/js/tilda-stat-1.0.min.js');},2000);</script> 
+<script>
+document.getElementById("form1166361651").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const name = form.querySelector('[name="Аты-жөніңіз (және жұбыңыздың)?"]').value.trim();
+  const selected = form.querySelector('[name="Сіздің мерекеге қатысуыңыз:"]:checked');
+  const choice = selected ? selected.value : "Қатысу жауабы жоқ";
+
+  const token = "7728062650:AAEy3ZRGynZamIGXpaK9vdSNB4UDaHft4dE";
+  const chat_id = "1073498758";
+  const message = `💌 *Жаңа RSVP*\n👤 *Қонақ:* ${name}\n📌 *Қатысуы:* ${choice}`;
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: message,
+      parse_mode: "Markdown"
+    })
+  }).then(response => {
+    if (response.ok) {
+      alert("Қатысқаныңыз үшін рахмет! ✅");
+      form.reset();
+    } else {
+      alert("Қате. Қайтадан көріңіз.");
+    }
+  });
+});
+</script>
+
+</body> 
 <!-- Mirrored from maryinvite.ru/ayaulym by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Jul 2025 07:13:25 GMT -->
 </html>
