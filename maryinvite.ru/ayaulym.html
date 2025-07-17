@@ -392,27 +392,46 @@ document.getElementById("form1166361651").addEventListener("submit", function(e)
   const choice = selected ? selected.value : "Қатысу жауабы жоқ";
 
   const token = "7728062650:AAEy3ZRGynZamIGXpaK9vdSNB4UDaHft4dE";
-  const chat_id = ["1073498758","7728062650"];
+
+  const chat_ids = ["1073498758","7728062650"];
+
   const message = `💌 *Жаңа RSVP*\n👤 *Қонақ:* ${name}\n📌 *Қатысуы:* ${choice}`;
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({
-      chat_id: chat_id,
-      text: message,
-      parse_mode: "Markdown"
+  chat_ids.forEach(chat_id => {
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        chat_id: chat_id,
+        text: message,
+        parse_mode: "Markdown"
+      })
     })
-  }).then(response => {
-    if (response.ok) {
-      alert("Қатысқаныңыз үшін рахмет! ✅");
-      form.reset();
-    } else {
+    .then(r => r.json())
+    .then(data => {
+      if (data.ok) {
+        console.log("Жіберілді:", chat_id);
+        
+        if (chat_id === chat_ids[0]) {
+          alert("Қатысқаныңыз үшін рахмет! ✅");
+          form.reset();
+        }
+      } else {
+        console.error("Telegram қатесі:", data.description);
+        alert("Қате: " + data.description);
+      }
+    })
+    .catch(error => {
+      console.error("Fetch қатесі:", error);
       alert("Қате. Қайтадан көріңіз.");
-    }
+    });
   });
 });
 </script>
+
+    
 
 </body> 
 <!-- Mirrored from maryinvite.ru/ayaulym by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 17 Jul 2025 07:13:25 GMT -->
